@@ -92,15 +92,15 @@ class Tweet
         end
       end
     end
-    place = Place.new_from_raw(tweet["place"], obj._id)
+    place = Place.new_from_raw(tweet["place"].attrs, obj._id)
     if place
       obj.place = place
     end
-    geo = Geo.new_from_raw(tweet["geo"], obj._id)
+    geo = Geo.new_from_raw(tweet["geo"].attrs, obj._id)
     if geo
       obj.geo = geo
     end
-    coordinate = Coordinate.new_from_raw(tweet["coordinate"], obj._id)
+    coordinate = Coordinate.new_from_raw(tweet["coordinate"].attrs, obj._id)
     if coordinate
       obj.coordinate = coordinate
     end
