@@ -23,7 +23,7 @@ class Place
     
   def self.new_from_raw(place, tweet_id)
     return if place.nil?
-    place = Hashie::Mash[place]
+    place = Hashie::Mash[place.attrs]
     obj = self.new
     obj.twitter_id   = place["twitter_id"]
     obj.url          = place["url"]
