@@ -1,3 +1,3 @@
 module OIITwitterGoodies
-  VERSION = "0.0.740"
+  VERSION = "0.0.741"
 end

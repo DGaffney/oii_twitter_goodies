@@ -12,7 +12,7 @@ class Geo
   
   def self.new_from_raw(geo, tweet_id)
     return if geo.nil?
-    geo = Hashie::Mash[geo]
+    geo = Hashie::Mash[geo.attrs]
     obj = self.new
     obj.type = geo["type"]
     obj.coordinates = geo["coordinates"]
