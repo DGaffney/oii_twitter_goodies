@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["itsme@devingaffney.com"]
   gem.description   = %q{OII Twitter Goodies!}
   gem.summary       = %q{Warm goopy Ruby code for people at OII (or anyone really) to quickly get their hands dirty with Twitter data}
-  gem.homepage      = "http://oii.ox.ac.uk"
+  gem.homepage      = "http://github.com/DGaffney/oii_twitter_goodies"
   gem.add_development_dependency "bundler", ">= 1.0.0"
   gem.add_development_dependency "mongo_mapper"
   gem.add_development_dependency "bcrypt-ruby"
@@ -22,6 +22,17 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "hashie"
   gem.add_development_dependency "typhoeus"
   gem.add_development_dependency "json"
+  gem.add_dependency "bundler", ">= 1.0.0"
+  gem.add_dependency "mongo_mapper"
+  gem.add_dependency "bcrypt-ruby"
+  gem.add_dependency "bson_ext"
+  gem.add_dependency "oauth"
+  gem.add_dependency "twitter"
+  gem.add_dependency "tweetstream"
+  gem.add_dependency "minitest"
+  gem.add_dependency "hashie"
+  gem.add_dependency "typhoeus"
+  gem.add_dependency "json"
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
