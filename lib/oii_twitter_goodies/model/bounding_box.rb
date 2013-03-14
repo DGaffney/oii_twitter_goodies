@@ -13,7 +13,7 @@ class BoundingBox
     return nil if bounding_box.nil?
     bounding_box = Hashie::Mash[bounding_box]
     obj = self.new
-    obj.type = bounding_box["type"]
+    obj.type = bounding_box["type"] || "Not Specified"
     obj.coordinates = bounding_box["coordinates"]
     obj.place_id = place_id
     obj.save!
