@@ -32,7 +32,7 @@ class Place
     obj.full_name    = place["full_name"]
     obj.country_code = place["country_code"]
     obj.country      = place["country"]
-    bounding_box = BoundingBox.new_from_raw(place["bounding_box"], obj._id)
+    bounding_box = BoundingBox.new_from_raw(place["bounding_box"].attrs, obj._id)
     if bounding_box
       obj.bounding_box = bounding_box
     end
