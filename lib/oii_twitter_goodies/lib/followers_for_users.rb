@@ -52,6 +52,10 @@ class FollowersForUsers
         puts "Got Twitter::Error::BadGateway error - usually this is just a missed connect from Twitter."
         sleep(10)
         retry
+      rescue Twitter::Error::TooManyRequests
+        puts "Got Twitter::Error::TooManyRequests error - we are rate limited and will sleep for 15 minutes. See you in a bit."
+        sleep(15*60)
+        retry
       end
       ids = ids|data.ids
       cursor = data["next_cursor"]
@@ -68,6 +72,10 @@ class FollowersForUsers
       rescue Twitter::Error::BadGateway
         puts "Got Twitter::Error::BadGateway error - usually this is just a missed connect from Twitter."
         sleep(10)
+        retry
+      rescue Twitter::Error::TooManyRequests
+        puts "Got Twitter::Error::TooManyRequests error - we are rate limited and will sleep for 15 minutes. See you in a bit."
+        sleep(15*60)
         retry
       end
     end
