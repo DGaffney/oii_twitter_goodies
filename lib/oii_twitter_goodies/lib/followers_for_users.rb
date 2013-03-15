@@ -46,7 +46,13 @@ class FollowersForUsers
     ids = []
     while cursor != 0
       puts cursor
-      data = Hashie::Mash[@client.send(direction+"_ids", screen_name, :cursor => cursor).attrs]
+      begin
+        data = Hashie::Mash[@client.send(direction+"_ids", screen_name, :cursor => cursor).attrs]
+      rescue Twitter::Error::BadGateway
+        puts "Got Twitter::Error::BadGateway error - usually this is just a missed connect from Twitter."
+        sleep(10)
+        retry
+      end
       ids = ids|data.ids
       cursor = data["next_cursor"]
     end
@@ -57,7 +63,13 @@ class FollowersForUsers
     screen_names = [screen_names].flatten
     user_data = []
     screen_names.each_slice(100) do |screen_name_set|
-      user_data = [user_data|@client.users(screen_name_set)].flatten
+      begin
+        user_data = [user_data|@client.users(screen_name_set)].flatten
+      rescue Twitter::Error::BadGateway
+        puts "Got Twitter::Error::BadGateway error - usually this is just a missed connect from Twitter."
+        sleep(10)
+        retry
+      end
     end
     user_data
   end
